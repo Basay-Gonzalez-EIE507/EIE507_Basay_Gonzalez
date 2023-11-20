@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado de la Búsqueda</title>
+    <style>
+        .login-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultado de la Búsqueda</h1>
+
+    <form method="POST">
+        <label for="search_term">Término de búsqueda:</label>
+        <input type="text" name="search_term" id="search_term">
+        <input type="submit" value="Buscar">
+
+        <!-- Agrega el botón de inicio de sesión directamente en el formulario -->
+        <input type="button" class="login-button" value="Iniciar Sesión" onclick="location.href='{{ url_for('login') }}';">
+    </form>
+
+    <hr>
+
+    <h2>Resultados:</h2>
+
+    <ul>
+        {% if results %}
+            {% for result in results %}
+                <li>{{ result[0] }} - {{ result[1] }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No se encontraron resultados.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>
